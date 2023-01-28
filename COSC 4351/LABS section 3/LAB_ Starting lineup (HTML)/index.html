@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Starting Lineup</title>
+</head>
+<body>
+   <h1>Starting Lineup</h1>
+   
+   <!-- Place your form here -->
+   <form action="https://wp.zybooks.com/form-viewer.php" method="post">
+      <p>
+         <fieldset>
+            <legend>Status:</legend>
+           
+            <input type="radio" name="status" id="Draft" >
+            <label for="Draft">Draft</label>
+            <input type="radio" name="status" id="Final" checked>
+            <label for="Final">Final</label>
+         </fieldset>
+      </p>
+      <p>
+         <label for="gameDate">Date:</label>
+         <select name="gameDate" id="gameDate">
+            <option name="gameDate" value="March 20">March 20</option>
+            <option name="gameDate" value="March 24">March 24</option>
+            <option name="gameDate" value="April 2">April 2</option>
+            <option name="gameDate" value="April 6">April 6</option>
+            <option name="gameDate" value="April 13">April 13</option>
+         </select>
+      </p>
+      <p>
+         <fieldset>
+            <legend>Players:</legend>
+            <p>
+               <input type="checkbox" id="player" name="player" value="Aarav Agarwal">
+               <label for="player">Aarav Agarwal</label></p>
+               <input type="checkbox" id="player2" name="player" value="Ava Johnson">
+               <label for="player2">Ava Johnson</label><br>
+               <input type="checkbox" id="player3" name="player" value="Julio Ortiz">
+               <label for="player3">Julio Ortiz</label><br>
+               <input type="checkbox" id="player4" name="player" value="Liam Rubio">
+               <label for="player4">Liam Rubio</label><br>
+               <input type="checkbox" id="player5" name="player" value="Emma Witherspoon">
+               <label for="player5">Emma Witherspoon</label>
+         </fieldset>
+      </p>
+      <p>
+         <input type="submit" value="Submit"/>
+      </p>
+   </form>
+</body>
+</html>
