@@ -1,0 +1,429 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{amsbsy}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={MATH 4322 Homework 1},
+  pdfauthor={Saim Ali},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{MATH 4322 Homework 1}
+\author{Saim Ali}
+\date{1/28/23}
+
+\begin{document}
+\maketitle
+
+\hypertarget{instructions}{%
+\subsection{Instructions}\label{instructions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Due date: January 31, 2023, 11:59 PM
+\item
+  Answer the questions fully for full credit.
+\item
+  Scan or Type your answers and submit only one file. (If you submit
+  several files only the recent one uploaded will be graded).
+\item
+  Preferably save your file as PDF before uploading.
+\item
+  Submit in Canvas under Homework 1.
+\item
+  These questions are from \emph{An Introduction to Statistical
+  Learning}, second edition by James, et. al., chapter 2.
+\item
+  The information in the gray boxes are R code that you can use to
+  answer the questions.
+\end{enumerate}
+
+\hypertarget{problem-1}{%
+\subsection{Problem 1}\label{problem-1}}
+
+Explain whether each scenario is a classification or regression problem,
+and indicate whether we are most interested in inference or prediction.
+Finally, provide \(n\) and \(p\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  We are interested in predicting the \% change in the USD/Euro exchange
+  rate in relation to the weekly changes in the world stock markets.
+  Hence we collect weekly data for all of 2012. For each week we record
+  the \% change in the USD/Euro, the \% change in the US market, the \%
+  change in the British market, and the \% change in the German
+  market.\\
+  \textbf{hello }
+\item
+  An online store is determining whether or not a customer will purchase
+  additional items. This online store collected data from 1500 customers
+  and looked at cost of initial purchase, if there was a special offer,
+  type of item purchased, number of times the customer logged into their
+  account, and if they purchased additional items.
+\end{enumerate}
+
+\hypertarget{problem-2}{%
+\subsection{Problem 2}\label{problem-2}}
+
+This is an exercises about bias, variance and MSE.
+
+Suppose we have \(n\) independent Bernoulli trails with true success
+probability \(p\). Consider two estimators of \(p\):
+\(\hat{p}_1 = \hat{p}\) where \(\hat{p}\) is the sample proportion of
+successes and \(\hat{p}_2 = \frac{1}{2}\), a fixed constant.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Find the expected value and bias of each estimator.\\
+\item
+  Find the variance of each estimator.\\
+\item
+  Find the MSE of each estimator and compare them by plotting against
+  the true \(p\). Use \(n = 4\). Comment on the comparison.
+\end{enumerate}
+
+\newpage
+
+\hypertarget{problem-3}{%
+\subsection{Problem 3}\label{problem-3}}
+
+Describe the differences between a parametric and a non-parametric
+statistical learning approach. What are the advantages of a parametric
+approach to regression or classification (as opposed to a non-parametric
+approach)? What are its disadvantages?
+
+\hypertarget{problem-4}{%
+\subsection{Problem 4}\label{problem-4}}
+
+This exercise involves the \texttt{Auto} data set in \texttt{ISLR}
+package. Make sure that the missing values have been removed from the
+data.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Which of the predictors are quantitative, and which are qualitative?\\
+\item
+  What is the range of each quantitative predictor? You can answer this
+  using the \texttt{summary()} function.\\
+\item
+  What is the mean and standard deviation of each quantitative
+  predictor?\\
+\item
+  Now remove the 10th through 85th observations. What is the range,
+  mean, and standard deviation of each predictor in the subset of the
+  data that remains?\\
+\item
+  Using the full data set, investigate the predictors graphically, using
+  scatterplots or other tools of your choice. Create some plots
+  highlighting the relationships among the predictors. Comment on your
+  findings.\\
+\item
+  Suppose that we wish to predict gas mileage (mpg) on the basis of the
+  other variables. Do your plots suggest that any of the other variables
+  might be useful in predicting mpg? Justify your answer.
+\end{enumerate}
+
+\hypertarget{problem-5}{%
+\subsection{Problem 5}\label{problem-5}}
+
+This exercise relates to the \texttt{College} data set, which can be
+found in the file \texttt{College.csv} attached to this homework set in
+Blackboard. It contains a number of variables for 777 different
+universities and colleges in the US. The variables are
+
+\begin{itemize}
+\tightlist
+\item
+  Private : Public/private indicator
+\item
+  Apps : Number of applications received
+\item
+  Accept : Number of applicants accepted
+\item
+  Enroll : Number of new students enrolled
+\item
+  Top10perc : New students from top 10\% of high school class
+\item
+  Top25perc : New students from top 25\% of high school class
+\item
+  F.Undergrad : Number of full-time undergraduates
+\item
+  P.Undergrad : Number of part-time undergraduates
+\item
+  Outstate : Out-of-state tuition
+\item
+  Room.Board : Room and board costs
+\item
+  Books : Estimated book costs
+\item
+  Personal : Estimated personal spending
+\item
+  PhD : Percent of faculty with Ph.D.'s
+\item
+  Terminal : Percent of faculty with terminal degree
+\item
+  S.F.Ratio : Student/faculty ratio
+\item
+  perc.alumni : Percent of alumni who donate
+\item
+  Expend : Instructional expenditure per student
+\item
+  Grad.Rate : Graduation rate
+\end{itemize}
+
+Before reading the data into \texttt{R}, it can be viewed in Excel or a
+text editor.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Use the \texttt{read.csv()} function to read the data into \texttt{R}.
+  Call the loaded data \texttt{college}. Make sure that you have the
+  directory set to the correct location for the data. You can also
+  import this data set into \texttt{RStudio} by using the \textbf{Import
+  Dataset} \(\rightarrow\) \textbf{From Text} drop down list in the
+  Environment window.
+\item
+  Look at the data using the \texttt{View()} function. You should notice
+  that the first column is just the name of each university. We will not
+  use this column as a variable but it may be handy to have these names
+  for later. Try the following commands in \texttt{R}:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(college) }\OtherTok{\textless{}{-}}\NormalTok{ college[,}\DecValTok{1}\NormalTok{]}
+\NormalTok{college }\OtherTok{\textless{}{-}}\NormalTok{ college[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\FunctionTok{View}\NormalTok{(college)}
+\end{Highlighting}
+\end{Shaded}
+
+If you are getting an error make sure your data frame is named with a
+lowercase ``c''.\\
+Give a brief description of what you see in the data frame.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Use the \texttt{summary()} function to produce a numerical summary of
+  the variables in the data set. Is there any variables that do not show
+  a numerical summary?
+\end{enumerate}
+
+Type in the following in \texttt{R}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college}\SpecialCharTok{$}\NormalTok{Private }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(college}\SpecialCharTok{$}\NormalTok{Private)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Use the \texttt{pairs()} function to produce a scatterplot matrix of
+  the first five columns or variable of the dataset. Describe any
+  relationships you see in these plots.\\
+\item
+  Use the \texttt{plot()} function to produce a plot of
+  \texttt{Outstate} versus \texttt{Private}. What type of plot was
+  produced? Give a description of the relationship. \emph{Hint:
+  `Outstate is in the y-axis}.\\
+\item
+  Create a new qualitative variable, called \texttt{Elite}, by
+  \(binning\) the \texttt{Top10perc} variable. We are going to divide
+  universities into two groups based on whether or not the proportion of
+  students coming from the top 10\% of their high school classes exceeds
+  50\%. Type in the following in \texttt{R}:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Elite }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\StringTok{"No"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(college)) }\CommentTok{\#this gives a column of No\textquotesingle{}s for the same number of rows college. }
+\NormalTok{Elite[college}\SpecialCharTok{$}\NormalTok{Top10perc }\SpecialCharTok{\textgreater{}} \DecValTok{50}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Yes"} \CommentTok{\#changes to Yes if top 10\% is greater than 50}
+\NormalTok{Elite }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(Elite)}
+\NormalTok{college }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(college,Elite) }\CommentTok{\#adds Elite as a column}
+\end{Highlighting}
+\end{Shaded}
+
+Use the \texttt{summary()} function to see how many elite universities
+there are.
+
+\hypertarget{problem-6}{%
+\subsection{Problem 6}\label{problem-6}}
+
+This exercise involves the Boston housing data set.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  To begin, load in the Boston data set. The Boston data set is part of
+  the ISLR2 library. You may have to install the ISLR2 library then call
+  for this library.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ISLR2)}
+\end{Highlighting}
+\end{Shaded}
+
+Now the data set is contained in the object Boston.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Boston}
+\end{Highlighting}
+\end{Shaded}
+
+Read about the data set:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?Boston}
+\end{Highlighting}
+\end{Shaded}
+
+How many rows are in this data set? How many columns? What do the rows
+and columns represent?
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  Make some pairwise scatterplots of the predictors (columns) in this
+  data set. Describe your findings.
+\item
+  Are any of the predictors associated with per capita crime rate? If
+  so, explain the relationship.
+\item
+  Do any of the census tracts of Boston appear to have particularly high
+  crime rates? Tax rates? Pupil-teacher ratios? Comment on the range of
+  each predictor.
+\item
+  How many of the census tracts in this data set bound the Charles
+  river?
+\item
+  What is the median pupil-teacher ratio among the towns in this data
+  set?
+\item
+  Which census tract of Boston has lowest median value of owner occupied
+  homes? What are the values of the other predictors for that census
+  tract, and how do those values compare to the overall ranges for those
+  predictors? Comment on your findings.
+\item
+  In this data set, how many of the census tracts average more than
+  seven rooms per dwelling? More than eight rooms per dwelling? Comment
+  on the census tracts that average more than eight rooms per dwelling.
+\end{enumerate}
+
+\end{document}
