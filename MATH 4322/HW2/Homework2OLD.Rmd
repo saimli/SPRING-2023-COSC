@@ -1,0 +1,196 @@
+---
+title: "MATH 4322 Homework 2"
+author: "Instructor: Dr. Cathy Poliak"
+date: "Spring 2023"
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Instructions
+
+* Due February 9, 2023 at 11:59 pm
+* Answer all questions fully
+* Submit the answers in one file, preferably PDF, then upload in BlackBoard.
+* These questions are from **Introduction to Statistical Learning, 2nd edition**, chapters 3 and 6.  
+
+
+## Problem 1
+
+The following output is based on predicting `sales` based on three media budgets, `TV`, `radio`, and `newspaper`.  
+
+```{r,echo=FALSE}
+Advertising <- read.csv("C:/Users/cpoliak/OneDrive - University Of Houston/MATH 4322/Advertising.csv")
+sales.lm = lm(sales ~ TV + radio + newspaper, data = Advertising)
+summary(sales.lm)
+```
+
+a.  Give the estimated model to predict sales.    
+**y = 2.939 + .046(TV) + .189(radio) - .001(newspaper)**
+
+b.  Describe the null hypothesis to which the p-values given in the `Coefficients` table correspond.  Explain this in terms of the `sales`, `TV`, `radio`, and `newspaper`, rather than in terms of the coefficients of the linear model.   
+**H0:βi=0, Ha:βi≠0 **  
+**Using the information provided above, I will evaluate each variable. **  
+**Intercept = p<.0001; null hypothesis is rejected**  
+**TV = p<.0001; null hypothesis is rejected**  
+**radio = p<.0001; null hypothesis is rejected**  
+**newspaper = p=.86; null hypothesis is accepted**
+
+c.  Are there any variables that may not be significant in predicting `sales`?    
+**newspaper**
+
+\newpage
+
+## Problem 2  
+
+Based on the previous problem,the following is the output from the full model: \[\text{sales} = \beta_0 + \beta_1\times\text{TV} + \beta_2\times\text{radio} + \beta_3\times\text{newspaper} + \epsilon\]
+
+```{r,echo=FALSE}
+anova(sales.lm)
+```
+
+Below is based on the model 
+\[\text{sales} = \beta_0 + \beta_1\times\text{TV} + \beta_2\times\text{radio} + \epsilon\]
+
+```{r,echo=FALSE}
+sales2.lm = lm(sales ~ TV + radio, data = Advertising)
+anova(sales2.lm)
+```
+
+Below is based on the model $\text{sales} = \beta_0 + \beta_1\times\text{TV} + \epsilon$
+
+```{r,echo = FALSE}
+sales1.lm = lm(sales ~ TV, data = Advertising)
+anova(sales1.lm)
+```
+
+a)  Determine the `AIC` for all three models.  
+b)  Determine the $C_p$ for all three models.  
+c)  Determine the adjusted $R^2$ for all three models.  
+d)  Determine the `RSE` for all three models.  
+e)  Which model best fits to predict `sales` based on these statistics?  
+
+\newpage
+
+## Problem 3
+
+Suppose we have a data set with five predictors, $X_1$ =GPA, $X_2$ = IQ, $X_3$ = Gender (1 for Female and 0 for Male), $X_4$ = Interaction between GPA and IQ, and $X_5$ = Interaction between GPA and Gender. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get $\hat{\beta}_0 = 50$, $\hat{\beta}_1 = 20$, $\hat{\beta}_2= 0.07$, $\hat{\beta}_3 = 35$,$\hat{\beta}_4 = 0.01$, $\hat{\beta}_5 = -10$.
+
+(a) Which answer is correct, and why?
+    i. For a fixed value of IQ and GPA, males earn more on average than females.
+    ii. For a fixed value of IQ and GPA, females earn more on average than males.
+    iii. For a fixed value of IQ and GPA, males earn more on average than females provided that the GPA is high enough.
+    iv. For a fixed value of IQ and GPA, females earn more on average than males provided that the GPA is high enough.
+  
+(b) Predict the salary of a female with IQ of 110 and a GPA of 4.0.
+(c) True or false: Since the coefficient for the GPA/IQ interaction term is very small, there is very little evidence of an interaction effect. Justify your answer.
+
+## Problem 4
+
+We perform best subset, forward stepwise, and backward stepwise selection on a single data set. For each approach, we obtain $p + 1$ models, containing $0, 1, 2,\ldots ,p$ predictors.  Answer true or false to the following statements.
+
+(a) The predictors in the $k$-variable model identified by forward stepwise are a subset of the predictors in the $(k+1)$-variable model identified by forward stepwise selection.  
+(b) The predictors in the k-variable model identified by backward stepwise are a subset of the predictors in the $(k + 1)$-variable model identified by backward stepwise selection.  
+(c) The predictors in the $k$-variable model identified by backward stepwise are a subset of the predictors in the $(k + 1)$-variable model identified by forward stepwise selection.  
+(d) The predictors in the $k$-variable model identified by forward stepwise are a subset of the predictors in the $(k+1)$-variable model identified by backward stepwise selection.  
+(e) The predictors in the $k$-variable model identified by best subset are a subset of the predictors in the $(k + 1)$ - variable model identified by best subset selection.
+
+
+## Problem 5
+
+This question involves the use of simple linear regression on the *Auto* data set.  This can be found in the `ISLR2` package in `R`.
+
+(a) Use the `lm()` function to perform a simple linear regression with *mpg* as the response and *horsepower* (*hp*) as the predictor. Use the `summary()` function to print the results. Comment on the output. For example:  
+
+    i. Is there a relationship between the predictor and the response?
+    ii. How strong is the relationship between the predictor and the response?
+    iii. Is the relationship between the predictor and the response positive or negative?
+    iv. What is the predicted mpg associated with a horsepower of 98? What are the associated 95% confidence and prediction intervals?  Give an interpretation of these intervals.
+    
+(b) Plot the response and the predictor. Use the `abline()` function to display the least squares regression line.
+(c) Use the `plot()` function to produce diagnostic plots of the least squares regression fit. Comment on any problems you see with the fit.
+
+
+
+
+## Problem 6
+
+This question involves the use of multiple linear regression on the *Auto* data set.  
+
+(a) Produce a scatterplot matrix which includes all of the variables in the data set.
+(b) Compute the matrix of correlations between the variables using the function `cor()`. You will need to exclude the name variable, `cor()` which is qualitative.
+(c) Use the `lm()` function to perform a multiple linear regression with *mpg* as the response and all other variables except name as the predictors. Use the `summary()` function to print the results. Comment on the output. For instance:
+    i. Is there a relationship between the predictors and the response?
+    ii. Which predictors appear to have a statistically significant relationship to the response?
+    iii. What does the coefficient for the year variable suggest?
+    
+(d) Use the `plot()` function to produce diagnostic plots of the linear regression fit based on the predictors that appear to have a statistically signifianct relationship to the response. Comment on any problems you see with the fit. Do the residual plots suggest any unusually large outliers? Does the leverage plot identify any observations with unusually high leverage?
+(e) Use the * and/or : symbols to fit linear regression models with interaction effects. Do any interactions appear to be statistically significant?
+(f) Try a few different transformations of the variables, such as *log(X)*, $\sqrt{X}$, $X^2$. Comment on your findings.
+
+
+## Problem 7
+
+This problem involves the `Boston` data set, from the `ISLR2` pakcage. We will now try to predict per capita crime rate using the other variables in this data set. In other words, per capita crime rate is the response, and the other variables are the predictors.  
+
+(a) For each predictor, fit a simple linear regression model to predict
+the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Create some plots to back up your assertions.  
+
+(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis $H_0 : \beta_j = 0$?  
+
+(c) How do your results from (a) compare to your results from (b)? Create a plot displaying the univariate regression coefficients from (a) on the x-axis, and the multiple regression coefficients from (b) on the y-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and its coefficient estimate in the multiple linear regression model is shown on the y-axis.  
+
+(d) Is there evidence of non-linear association between any of the
+predictors and the response? To answer this question, for each
+predictor X, fit a model of the form
+\[Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3 + \epsilon.\]
+
+\newpage
+
+## Problem 8
+
+This problem focuses on the **collinearity** problem.
+
+(a) Perform the following commands in R:
+
+```{r,results='hide'}
+set.seed (1)
+x1=runif (100)
+x2 =0.5* x1+rnorm (100) /10
+y=2+2* x1 +0.3* x2+rnorm (100)
+```
+
+The last line corresponds to creating a linear model in which $y$ is a function of $x_1$ and $x_2$. Write out the form of the linear model. What are the regression coefficients?
+
+(b) What is the correlation between $x_1$ and $x_2$? Create a scatterplot displaying the relationship between the variables.
+(c) Using this data, fit a least squares regression to predict y using $x_1$ and $x_2$. Describe the results obtained. What are $\hat{\beta}_0$, $\hat{\beta}_1$, and $\hat{\beta}_2$? How do these relate to the true $\beta_0$, $\beta_1$, and $\beta_2$? Can you reject the null hypothesis $H_0 : \beta_1 = 0$? How about the null hypothesis $H_0 : \beta_2 = 0$?
+(d) Now fit a least squares regression to predict $y$ using only $x_1$. Comment on your results. Can you reject the null hypothesis $H_0 : \beta_1 = 0$?
+(e) Now fit a least squares regression to predict $y$ using only $x_2$. Comment on your results. Can you reject the null hypothesis $H_0 : \beta_1 = 0$?
+(f) Do the results obtained in (c)–(e) contradict each other? Explain your answer.
+(g) Now suppose we obtain one additional observation, which was unfortunately mismeasured.
+
+```{r}
+x1=c(x1 , 0.1)
+x2=c(x2 , 0.8)
+y=c(y,6)
+```
+
+Re-fit the linear models from (c) to (e) using this new data. What effect does this new observation have on the each of the models? In each model, is this observation an outlier? A high-leverage point? Both? Explain your answers.
+
+
+
+## Problem 9
+
+In this exercise, we will generate simulated data, and will then use this data to perform best subset selection.
+
+(a) Use the `rnorm()` function to generate a predictor $X$ of length $n$ = 100, as well as a noise vector $\epsilon$ of length $n$ = 100.
+(b) Generate a response vector $Y$ of length n = 100 according to
+the model
+\[Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3 + \epsilon,\]
+where $\beta_0$, $\beta_1$, $\beta_2$, and $\beta_3$ are constants of your choice.
+
+(c) Use the `regsubsets()` function to perform best subset selection in order to choose the best model containing the predictors $X,X^2,\ldots,X^{10}$. What is the best model obtained according to $C_p$, BIC, and adjusted $R^2$? Show some plots to provide evidence for your answer, and report the coefficients of the best model obtained. Note you will need to use the `data.frame()` function to create a single data set containing both $X$ and $Y$.
+(d) Repeat (c), using forward stepwise selection and also using backwards stepwise selection. How does your answer compare to the results in (c)?

@@ -1,0 +1,517 @@
+---
+title: "MATH 4322 Homework 2"
+author: 'Instructor: Dr. Cathy Poliak'
+date: "Spring 2023"
+output:
+  word_document: default
+  pdf_document:
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Instructions
+
+* Due February 9, 2023 at 11:59 pm
+* Answer all questions fully
+* Submit the answers in one file, preferably PDF, then upload in BlackBoard.
+* These questions are from **Introduction to Statistical Learning, 2nd edition**, chapters 3 and 6.  
+
+
+## Problem 1
+
+The following output is based on predicting `sales` based on three media budgets, `TV`, `radio`, and `newspaper`.  
+
+```{r,echo=FALSE}
+#attach(#####)
+
+#Sales.lm = lm(Sales ~ TV + Radio + Newspaper, data = Advertising)
+#summary(Sales.lm)
+#max(X)
+```
+
+a.  Give the estimated model to predict sales.    
+**y = 2.939 + .046(TV) + .189(radio) - .001(newspaper)**
+
+b.  Describe the null hypothesis to which the p-values given in the `Coefficients` table correspond.  Explain this in terms of the `sales`, `TV`, `radio`, and `newspaper`, rather than in terms of the coefficients of the linear modelS.    
+**H0:βi=0, Ha:βi≠0 **  
+**Using the information provided above, I will evaluate each variable. **  
+**Intercept = p<.0001; null hypothesis is rejected**  
+**TV = p<.0001; null hypothesis is rejected**  
+**radio = p<.0001; null hypothesis is rejected**  
+**newspaper = p=.86; null hypothesis is accepted**
+
+c.  Are there any variables that may not be significant in predicting `sales`?    
+**Newspaper**
+
+
+\newpage
+
+## Problem 2  
+
+Based on the previous problem,the following is the output from the full model: \[\text{sales} = \beta_0 + \beta_1\times\text{TV} + \beta_2\times\text{radio} + \beta_3\times\text{newspaper} + \epsilon\]
+
+```{r,echo=FALSE}
+#anova(Sales.lm)
+#summary(Sales.lm)
+#extractAIC(Sales.lm)
+```
+
+Below is based on the model 
+\[\text{sales} = \beta_0 + \beta_1\times\text{TV} + \beta_2\times\text{radio} + \epsilon\]
+
+```{r,echo=FALSE}
+#sales2.lm = lm(Sales ~ TV + Radio, data = Advertising)
+#summary(sales2.lm)
+#anova(sales2.lm)
+#extractAIC(sales2.lm)
+```
+
+Below is based on the model $\text{sales} = \beta_0 + \beta_1\times\text{TV} + \epsilon$
+
+```{r,echo = FALSE}
+#sales1.lm = lm(Sales ~ TV, data = Advertising)
+#summary(sales1.lm)
+#anova(sales1.lm)
+#extractAIC(sales1.lm)
+```
+
+a)  Determine the `AIC` for all three models.    
+**212.78, 210.81, 474.51**
+
+b)  Determine the $C_p$ for all three models.    
+**6.86, 4.9, 554.9**  
+
+c)  Determine the adjusted $R^2$ for all three models.    
+**.8956, .8962, .6099**
+d)  Determine the `RSE` for all three models.    
+**1.686, 1.681, 3.259**
+e)  Which model best fits to predict `sales` based on these statistics?    
+**Model 2 with TV & Radio variables**
+
+\newpage
+
+## Problem 3
+
+Suppose we have a data set with five predictors, $X_1$ =GPA, $X_2$ = IQ, $X_3$ = Gender (1 for Female and 0 for Male), $X_4$ = Interaction between GPA and IQ, and $X_5$ = Interaction between GPA and Gender. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get $\hat{\beta}_0 = 50$, $\hat{\beta}_1 = 20$, $\hat{\beta}_2= 0.07$, $\hat{\beta}_3 = 35$,$\hat{\beta}_4 = 0.01$, $\hat{\beta}_5 = -10$.
+
+(a) Which answer is correct, and why?
+    i. For a fixed value of IQ and GPA, males earn more on average than females.
+    ii. For a fixed value of IQ and GPA, females earn more on average than males.  
+
+
+  **iii. For a fixed value of IQ and GPA, males earn more on average than females provided that the GPA is high enough.**      
+  
+  **LSR: y^=50+20GPA+0.07IQ+35Gender+0.01GPA×IQ−10GPA×Gender; Males: y^=50+20GPA+0.07IQ+0.01GPA×IQ; Females: y^=85+10GPA+0.07IQ+0.01GPA×IQ. So the starting salary for males is higher than for females on average if  50+20GPA≥85+10GPA which is equivalent to GPA ≥ 3.5**  
+  
+  
+    iv. For a fixed value of IQ and GPA, females earn more on average than males provided that the GPA is high enough.
+  
+(b) Predict the salary of a female with IQ of 110 and a GPA of 4.0.  
+**y^=85+40+7.7+4.4=137.1 which means the starting salary is equal to 137100$**  
+
+(c) True or false: Since the coefficient for the GPA/IQ interaction term is very small, there is very little evidence of an interaction effect. Justify your answer.  
+**To verify that the interaction of GPA/IQ term is very small we must test the hypothesis H0:β4^=0 and look at the p-value associated with given statistic to determine out answer. So our answer is False for the statement above.**
+
+
+\newpage
+
+## Problem 4
+
+We perform best subset, forward stepwise, and backward stepwise selection on a single data set. For each approach, we obtain $p + 1$ models, containing $0, 1, 2,\ldots ,p$ predictors.  Answer true or false to the following statements.
+
+(a) The predictors in the $k$-variable model identified by forward stepwise are a subset of the predictors in the $(k+1)$-variable model identified by forward stepwise selection.    
+**True**  
+
+(b) The predictors in the k-variable model identified by backward stepwise are a subset of the predictors in the $(k + 1)$-variable model identified by backward stepwise selection.    
+**True**  
+
+(c) The predictors in the $k$-variable model identified by backward stepwise are a subset of the predictors in the $(k + 1)$-variable model identified by forward stepwise selection.    
+**False**  
+
+(d) The predictors in the $k$-variable model identified by forward stepwise are a subset of the predictors in the $(k+1)$-variable model identified by backward stepwise selection.   
+**False**  
+
+(e) The predictors in the $k$-variable model identified by best subset are a subset of the predictors in the $(k + 1)$ - variable model identified by best subset selection.  
+**False**  
+
+
+
+\newpage
+
+
+## Problem 5
+
+This question involves the use of simple linear regression on the *Auto* data set.  This can be found in the `ISLR2` package in `R`.
+```{r,echo = FALSE}
+auto <- ISLR2::Auto
+attach(auto)
+simple <- lm(mpg~horsepower)
+summary(simple)
+confint(simple,data=auto)
+
+predict(simple, data.frame(horsepower = 98), interval = "confidence") 
+predict(simple, data.frame(horsepower = 98), interval = "prediction") 
+```
+(a) Use the `lm()` function to perform a simple linear regression with *mpg* as the response and *horsepower* (*hp*) as the predictor. Use the `summary()` function to print the results. Comment on the output. For example:  
+
+    i. Is there a relationship between the predictor and the response?  
+    **Yes there is strong evidence that the horsepower variable has a relationship with mpg**  
+    
+    ii. How strong is the relationship between the predictor and the response?  
+    **There is a very strong relationship between the given predictor and response**  
+    
+    iii. Is the relationship between the predictor and the response positive or negative?  
+    **It is a negative relationship with a slope of -.157845**  
+    
+    iv. What is the predicted mpg associated with a horsepower of 98? What are the associated 95% confidence and prediction intervals?  Give an interpretation of these intervals.  
+    **The predicted mpg associated with a horsepower of 98 given that the model is y=39.935861 -0.157845(mpg) is == 24.467**  
+    **The 95% confidence interval that the average mpg of a car with horsepower of 98 is between: 23.97308 and 24.96108**  
+    **The 95% prediction interval that the mpg of a car with horsepower of 98 is between: 14.8094 and 34.12476**  
+    
+
+(b) Plot the response and the predictor. Use the `abline()` function to display the least squares regression line.  
+**The abline with the least squares regresssion line is shown below.**
+
+```{r,echo = FALSE}
+plot(mpg ~ horsepower, data=auto) + abline(lm(mpg ~ horsepower, data=auto,col=),lwd=5, col="red")
+```
+
+(c) Use the `plot()` function to produce diagnostic plots of the least squares regression fit. Comment on any problems you see with the fit.
+
+
+```{r,echo = FALSE}
+aplot.lm <- lm(mpg~horsepower)
+par(mfrow = c(2,2))
+plot(aplot.lm)
+```
+
+
+
+
+\newpage
+
+## Problem 6
+
+This question involves the use of multiple linear regression on the *Auto* data set.  
+
+(a) Produce a scatterplot matrix which includes all of the variables in the data set.  
+```{r,echo = FALSE}
+pairs(auto)
+```
+
+(b) Compute the matrix of correlations between the variables using the function `cor()`. You will need to exclude the name variable, `cor()` which is qualitative.  
+
+```{r,echo = FALSE}
+df2 <-auto[,-9]
+summary(df2)
+cor(df2)
+```
+
+(c) Use the `lm()` function to perform a multiple linear regression with *mpg* as the response and all other variables except name as the predictors. Use the `summary()` function to print the results. Comment on the output. For instance:  
+
+```{r,echo = FALSE}
+multreg <- lm(formula = mpg ~ . - name, data = auto)
+summary(multreg)
+```
+
+    i. Is there a relationship between the predictors and the response?  
+    **Testing the hypothesis H0:βi=0 ∀i; The p-value corresponding to the F-statistic is 2.037^-139 this indicates a relationship between mpg and the other predictors.**  
+    
+    ii. Which predictors appear to have a statistically significant relationship to the response?  
+    **By checking the p-values given in the summary I concluded that origin, year, weight, and displacement had a significant relationship with mpg while acceleration, horsepower, and cylinders did not.**  
+    
+    iii. What does the coefficient for the year variable suggest?  
+    **The summary suggests that for every 1 year increase in the year attribute there will be an increate of 0.750773 in the mpg attribute assuming all other predictors remain constant. This in turn means that vehichles get more fuel efficent as time goes on in yearly models at a rate of about .75 mpg.**
+    
+(d) Use the `plot()` function to produce diagnostic plots of the linear regression fit based on the predictors that appear to have a statistically signifianct relationship to the response. Comment on any problems you see with the fit. Do the residual plots suggest any unusually large outliers? Does the leverage plot identify any observations with unusually high leverage?  
+**There is evidence that we can assume that there is normal distribution. We can also see on the plots that there is evidence that there is some non linearity in the data. The Residuals vs Leverage plot also shows us a few outliers and one high Leverge point (14).**  
+
+```{r,echo = FALSE}
+par(mfrow = c(2, 2))
+plot(multreg)
+```
+
+(e) Use the * and/or : symbols to fit linear regression models with interaction effects. Do any interactions appear to be statistically significant?  
+**I used the * symbol and found that the summary showed me the following: The interactions between 'horsepower' and 'weight' is significant, the interactions between 'acceleration' and 'year' is significant, and the interactions between 'cylinders' and 'displacement' are not significant.**  
+
+
+```{r,echo = FALSE}
+test <- lm(mpg ~ cylinders * displacement + horsepower * weight + 
+             acceleration * year, data = auto[, 1:8])
+summary(test)
+
+par(mfrow = c(2, 2))
+plot(log(auto$horsepower), auto$mpg)
+plot(sqrt(auto$horsepower), auto$mpg)
+plot((auto$horsepower)^2, auto$mpg)
+plot(log(auto$cylinders), auto$mpg)
+plot(sqrt(auto$cylinders), auto$mpg)
+plot((auto$cylinders)^2, auto$mpg)
+```
+
+(f) Try a few different transformations of the variables, such as *log(X)*, $\sqrt{X}$, $X^2$. Comment on your findings.  
+**When trying a few different transformations such as log(X), sqrt(x), and X^2 I found that no real linear relationships were seen with 'mpg', 'horsepower', 'cylinders', 'acceleration' as I found them to be potentially quadratic. I found that I was able to make the relationships for 'horsepower' somewhat linear from using the log(X) transformation.**  
+
+
+
+\newpage
+
+
+## Problem 7
+
+This problem involves the `Boston` data set, from the `ISLR2` pakcage. We will now try to predict per capita crime rate using the other variables in this data set. In other words, per capita crime rate is the response, and the other variables are the predictors.  
+
+```{r,echo = FALSE}
+library(MASS)
+attach(Boston)
+fit.zn <- lm(crim ~ zn)
+summary(fit.zn)
+
+fit.indus <- lm(crim ~ indus)
+summary(fit.indus)
+fit.dis <- lm(crim ~ dis)
+summary(fit.dis)
+chas <- as.factor(chas)
+fit.chas <- lm(crim ~ chas)
+summary(fit.chas)
+fit.nox <- lm(crim ~ nox)
+summary(fit.nox)
+fit.black <- lm(crim ~ black)
+summary(fit.black)
+fit.rad <- lm(crim ~ rad)
+summary(fit.rad)
+fit.tax <- lm(crim ~ tax)
+summary(fit.tax)
+fit.ptratio <- lm(crim ~ ptratio)
+summary(fit.ptratio)
+fit.age <- lm(crim ~ age)
+summary(fit.age)
+fit.rm <- lm(crim ~ rm)
+summary(fit.rm)
+fit.lstat <- lm(crim ~ lstat)
+summary(fit.lstat)
+fit.medv <- lm(crim ~ medv)
+summary(fit.medv)
+fit.all <- lm(crim ~ ., data = Boston)
+summary(fit.all)
+
+simple.reg <- vector("numeric",0)
+simple.reg <- c(simple.reg, fit.zn$coefficient[2])
+simple.reg <- c(simple.reg, fit.indus$coefficient[2])
+simple.reg <- c(simple.reg, fit.chas$coefficient[2])
+simple.reg <- c(simple.reg, fit.nox$coefficient[2])
+simple.reg <- c(simple.reg, fit.rm$coefficient[2])
+simple.reg <- c(simple.reg, fit.age$coefficient[2])
+simple.reg <- c(simple.reg, fit.dis$coefficient[2])
+simple.reg <- c(simple.reg, fit.rad$coefficient[2])
+simple.reg <- c(simple.reg, fit.tax$coefficient[2])
+simple.reg <- c(simple.reg, fit.ptratio$coefficient[2])
+simple.reg <- c(simple.reg, fit.black$coefficient[2])
+simple.reg <- c(simple.reg, fit.lstat$coefficient[2])
+simple.reg <- c(simple.reg, fit.medv$coefficient[2])
+mult.reg <- vector("numeric", 0)
+mult.reg <- c(mult.reg, fit.all$coefficients)
+mult.reg <- mult.reg[-1]
+plot(simple.reg, mult.reg, col = "red")
+
+```
+
+(a) For each predictor, fit a simple linear regression model to predict
+the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Create some plots to back up your assertions.   
+**We have to test H0:β1=0. When testing I found that 'chas' was the only predictor which the p value was more than .05. This means that all the predictors other than 'chas'; there is a significant association between each predictor and response excluding 'chas'. **
+
+
+(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis $H_0 : \beta_j = 0$?    
+**After fitting the multiple regression model using all the predictors given in the dataset our results show us that we can reject the null hypothesis for the following predictors: zn”, “dis”, “rad”, “black” and “medv”.**
+
+(c) How do your results from (a) compare to your results from (b)? Create a plot displaying the univariate regression coefficients from (a) on the x-axis, and the multiple regression coefficients from (b) on the y-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and its coefficient estimate in the multiple linear regression model is shown on the y-axis.  
+**'nox' is approximately -10 in single variate model and 31 in multiple regression model.**  
+**It is evident that there is a difference between the multiple and simple regression coefficients. This can be explained for the simple regression case by the slope representing the average affect of an increase of 1 in the predictor ignoring the other predictors. For the multiple regression coefficients, the slope term represents the average effect of an increase in the given predictor, the other predictors will also be fixed in this case.**
+
+```{r,echo = FALSE}
+plot(simple.reg, mult.reg, col = "red")
+```
+
+(d) Is there evidence of non-linear association between any of the
+predictors and the response? To answer this question, for each
+predictor X, fit a model of the form
+\[Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3 + \epsilon.\]  
+**For the following features, the p-value tells us that the coefficients are not significant: rad, rm, zn, tax,black, lstat.**  
+**For the following features, the p-value tells us that the coefficients are significant: indus, age, dis, pratio, medv, nox.**  
+**So we have determined which non-linear associate association is visible between which coefficients**
+
+
+```{r,echo = FALSE}
+fit.zn2 <- lm(crim ~ poly(zn, 3))
+summary(fit.zn2)
+fit.indus2 <- lm(crim ~ poly(indus, 3))
+summary(fit.indus2)
+fit.nox2 <- lm(crim ~ poly(nox, 3))
+summary(fit.nox2)
+fit.rm2 <- lm(crim ~ poly(rm, 3))
+summary(fit.rm2)
+fit.age2 <- lm(crim ~ poly(age, 3))
+summary(fit.age2)
+fit.dis2 <- lm(crim ~ poly(dis, 3))
+summary(fit.dis2)
+fit.rad2 <- lm(crim ~ poly(rad, 3))
+summary(fit.rad2)
+fit.tax2 <- lm(crim ~ poly(tax, 3))
+summary(fit.tax2)
+fit.ptratio2 <- lm(crim ~ poly(ptratio, 3))
+summary(fit.ptratio2)
+fit.black2 <- lm(crim ~ poly(black, 3))
+summary(fit.black2)
+fit.lstat2 <- lm(crim ~ poly(lstat, 3))
+summary(fit.lstat2)
+fit.medv2 <- lm(crim ~ poly(medv, 3))
+summary(fit.medv2)
+```
+\newpage
+
+## Problem 8
+
+This problem focuses on the **collinearity** problem.
+
+(a) Perform the following commands in R:
+
+```{r,results='hide'}
+set.seed (1)
+x1=runif (100)
+x2 =0.5* x1+rnorm (100) /10
+y=2+2* x1 +0.3* x2+rnorm (100)
+
+cor(x1, x2)
+plot(x1, x2)
+
+```
+
+The last line corresponds to creating a linear model in which $y$ is a function of $x_1$ and $x_2$. Write out the form of the linear model. What are the regression coefficients?  
+**The regression coefficients are B0 = 2+rnorm(100), B1 = 2, and B3 = 0.3**  
+**Form is: y=2+2* x1 +0.3* x2+rnorm (100)**
+
+(b) What is the correlation between $x_1$ and $x_2$? Create a scatterplot displaying the relationship between the variables.  
+**cor = 0.8351212**
+
+```{r,results='hide'}
+cor(x1, x2)
+plot(x1, x2)
+
+```
+
+(c) Using this data, fit a least squares regression to predict y using $x_1$ and $x_2$. Describe the results obtained. What are $\hat{\beta}_0$, $\hat{\beta}_1$, and $\hat{\beta}_2$? How do these relate to the true $\beta_0$, $\beta_1$, and $\beta_2$? Can you reject the null hypothesis $H_0 : \beta_1 = 0$? How about the null hypothesis $H_0 : \beta_2 = 0$?  
+****   
+
+```{r,results='hide'}
+lm.new =lm(y~x1+x2)
+summary(lm.new)
+
+```
+
+(d) Now fit a least squares regression to predict $y$ using only $x_1$. Comment on your results. Can you reject the null hypothesis $H_0 : \beta_1 = 0$?  
+**Given the estimates: βo = 2.1305, β1 = 1.4396 , and β3 = 1.0097***  
+**Our decisions are to reject the null hypothesis for B1 only at a 99% confidence and not fail to reject it at a 95% confidence. For B2 we will reject the null hypothesis given the value above.**  
+
+(e) Now fit a least squares regression to predict $y$ using only $x_2$. Comment on your results. Can you reject the null hypothesis $H_0 : \beta_1 = 0$?  
+**For the given B0=2.1124 and B1=1.9759, our decision will be to reject the null hypothesis for B1 because of the very low computated p-value. The r^2 value also shows us that x1 explains about 20% of the changes in the variable y.**  
+
+```{r,results='hide'}
+lm.new2 = lm(y~x1)
+summary(lm.new2)
+```
+
+(f) Do the results obtained in (c)–(e) contradict each other? Explain your answer.  
+**These results do contradict eachother since for part c we found that the multi-linear regression model x1 and x2 are not significant but we see in part d that xz1 and x2 are very significant and can explain up to 20% of the changes in y. **  
+
+(g) Now suppose we obtain one additional observation, which was unfortunately mismeasured.  
+****  
+
+
+```{r}
+x1=c(x1 , 0.1)
+x2=c(x2 , 0.8)
+y=c(y,6)
+lm.new3 =lm(y~x1+x2)
+summary(lm.new3);
+plot(lm.new3);
+```
+
+Re-fit the linear models from (c) to (e) using this new data. What effect does this new observation have on the each of the models? In each model, is this observation an outlier? A high-leverage point? Both? Explain your answers.  
+**I found the r^2 values to be slightly greater but not enough to be considered significant. I also found the x2 variable to be the significant variable instead of x1 from our previous data model. Lastly, looking at the use of cook's distance in the plots, the new added point is not an outlier but considered a leverage point.**  
+
+**For the second plot I found in both cases that x1 is significant however a big negative change in the r^2 value computer so this model is worse than our original. The added data point is also considered an outlier in this model.**  
+
+**For the thirds plots, x2 was considered significant and there is a big increase in the r^2 value so this means that this plot is better than our original from above. The added data point in this plot was also not an outlier or leverage point.**
+
+
+
+## Problem 9
+
+In this exercise, we will generate simulated data, and will then use this data to perform best subset selection.
+
+(a) Use the `rnorm()` function to generate a predictor $X$ of length $n$ = 100, as well as a noise vector $\epsilon$ of length $n$ = 100.  
+****    
+
+```{r}
+set.seed(1)
+X <- rnorm(100)
+noise <- rnorm(100)
+```
+
+(b) Generate a response vector $Y$ of length n = 100 according to
+the model
+\[Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3 + \epsilon,\]
+where $\beta_0$, $\beta_1$, $\beta_2$, and $\beta_3$ are constants of your choice.  
+****  
+
+```{r}
+Y <- 3 + 1*X + 4*X^2 - 1*X^3 + noise
+```
+
+(c) Use the `regsubsets()` function to perform best subset selection in order to choose the best model containing the predictors $X,X^2,\ldots,X^{10}$. What is the best model obtained according to $C_p$, BIC, and adjusted $R^2$? Show some plots to provide evidence for your answer, and report the coefficients of the best model obtained. Note you will need to use the `data.frame()` function to create a single data set containing both $X$ and $Y$.  
+**Y=16.973+3.007X+0.842X2−1.986X3 is the computed model with chosen best subsets. The model indicates that 3 variables provide the best fit.**    
+
+```{r,echo=FALSE}
+require(leaps)
+df <- data.frame(Y, X)
+fit <- regsubsets(Y ~ poly(X, 10), data = df, nvmax = 10)
+
+fit_summary <- summary(fit)
+
+require(tidyverse);require(ggplot2);require(ggthemes);
+
+data_frame(Cp = fit_summary$cp,
+           BIC = fit_summary$bic,
+           AdjR2 = fit_summary$adjr2) %>%
+    mutate(id = row_number()) %>%
+    gather(value_type, value, -id) %>%
+    ggplot(aes(id, value, col = value_type)) +
+    geom_line() + geom_point() + ylab('') + xlab('Number of Variables Used') +
+    facet_wrap(~ value_type, scales = 'free') +
+    theme_tufte() + scale_x_continuous(breaks = 1:10)
+```
+
+(d) Repeat (c), using forward stepwise selection and also using backwards stepwise selection. How does your answer compare to the results in (c)?  
+**I found that after repeating this using a forward stepwise selection  and also using backwards stepwise selection that the backwards stepwise model agreed with the output of the best chosen subsets in the model.**  
+
+```{r,echo=FALSE}
+#require(leaps)
+df <- data.frame(Y, X)
+fit <- regsubsets(Y ~ poly(X, 10), data = df, nvmax = 10)
+
+fit_summary <- summary(fit)
+
+#require(tidyverse);require(ggplot2);require(ggthemes);
+
+data_frame(Cp = fit_summary$cp,
+           BIC = fit_summary$bic,
+           AdjR2 = fit_summary$adjr2) %>%
+    mutate(id = row_number()) %>%
+    gather(value_type, value, -id) %>%
+    ggplot(aes(id, value, col = value_type)) +
+    geom_line() + geom_point() + ylab('') + xlab('Number of Variables Used') +
+    facet_wrap(~ value_type, scales = 'free') +
+    theme_tufte() + scale_x_continuous(breaks = 1:10)
+```
