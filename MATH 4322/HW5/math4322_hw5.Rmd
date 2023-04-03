@@ -1,0 +1,85 @@
+---
+title: "MATH 4322 Homework 5"
+author: "Cathy Poliak"
+date: "Spring 2023"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+
+1. Due date: April 4, 2023
+2. Answer the questions fully for full credit.
+3. Scan or Type your answers and submit only one file. (If you submit several files only the recent one uploaded will be graded).
+4. Preferably save your file as PDF before uploading.
+5. Submit in Canvas.
+6. These questions are from *An Introduction to Statistical Learning with Applications* in R by James, et. al., chapter 8.
+7. The information in the gray boxes are R code that you can use to answer the questions.
+
+## Problem 1
+
+The questions relate to the following plots:
+
+```{r figurename, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("hw5-fig1.pdf")
+```
+
+a)  Sketch the tree corresponding to the partition of the predictor space illustrated on the left-hand plot.  The numbers inside the boxes indicate the mean of $Y$ within each region.  
+b)  Create a diagram similar to the left-hand plot using the tree illustrated in the right-hand plot.  You should divide up the predictor space inot the correct regions, and indicate the mean for each region.
+
+\newpage
+
+## Problem 2
+
+Suppose we produce ten bootstrapped samples from a data set containing red and green classes. We then apply a classification tree to each bootstrapped sample and, for a specific value of X, produce 10 estimates of $P$(Class is Red|$X$):
+\[0.1, 0.15, 0.2, 0.2, 0.55, 0.6, 0.6, 0.65, 0.7, \ \text{and} \ 0.75.\]
+There are two common ways to combine these results together into a single class prediction. One is the majority vote approach discussed in this chapter. The second approach is to classify based on the average probability. In this example, what is the final classification under each of these two approaches?
+
+## Problem 3
+
+Provide a detailed explanation of the algorithm that is used to fit a regression tree.
+
+## Problem 4
+
+This problem involves the `OJ` data set which is part of the `ISLR2` package.
+
+a) Create a training set containing a random sample of 800 observations, and a test set containing the remaining observations.  
+b) Fit a tree to the training data, with `Purchase` as the response and the other variables as predictors. Use the `summary()` function to produce summary statistics about the tree, and describe the results obtained. What is the training error rate? How many terminal nodes does the tree have?  
+c) Type in the name of the tree object in order to get a detailed text output. Pick one of the terminal nodes, and interpret the information displayed.  
+d) Create a plot of the tree, and interpret the results.  
+e) Predict the response on the test data, and produce a confusion matrix comparing the test labels to the predicted test labels. What is the test error rate?  
+f) Apply the `cv.tree()` function to the training set in order to determine the optimal tree size.  
+g) Produce a plot with tree size on the $x$-axis and cross-validated classification error rate on the $y$-axis.  
+h) Which tree size corresponds to the lowest cross-validated classification error rate?  
+i) Produce a pruned tree corresponding to the optimal tree size obtained using cross-validation. If cross-validation does not lead to selection of a pruned tree, then create a pruned tree with five terminal nodes.  
+j) Compare the training error rates between the pruned and unpruned trees. Which is higher?  
+k) Compare the test error rates between the pruned and unpruned trees. Which is higher?
+
+\newpage
+
+## Problem 5
+
+We will use the `Carseats` data set that is in the `ISLR` package to see to predict `Sales` using regression trees and related approaches.
+
+a) Split the data set into a training set and a test set.  
+b) Fit a regression tree to the training set. Plot the tree, and interpret the results. What test MSE do you obtain?  
+c) Use cross-validation in order to determine the optimal level of tree complexity. Does pruning the tree improve the test MSE?  
+d) Use the bagging approach in order to analyze this data. What test MSE do you obtain? Use the `importance()` function to determine which variables are most important.  
+(e) Use random forests to analyze this data. What test MSE do you obtain? Use the `importance()` function to determine which variables aremost important. Describe the effect of $m$, the number of variables considered at each split, on the error rate obtained.
+
+
+## Problem 6
+
+This question uses the `Caravan` data set in the `ISLR2` package.
+
+(a) Create a training set consisting of the first 1,000 observations, and a test set consisting of the remaining observations.  
+
+
+(b) Fit a boosting model to the training set with Purchase as the response and the other variables as predictors. Use 1,000 trees, and a shrinkage value of 0.01. Which predictors appear to be the most important?  
+
+(c) Use the boosting model to predict the response on the test data.
+Predict that a person will make a purchase if the estimated probability
+of purchase is greater than 20 %. Form a confusion matrix.  What fraction of the people predicted to make a purchase do in fact make one?
